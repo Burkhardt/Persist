@@ -13,3 +13,4 @@
 /Users/RSB/ProjectsCoreGitHub/Source/HDitem.Persist/obj/Debug/netstandard2.0/HDitem.Persist.csproj.CopyComplete
 /Users/RSB/ProjectsCoreGitHub/Source/HDitem.Persist/obj/Debug/netstandard2.0/HDitem.Persist.dll
 /Users/RSB/ProjectsCoreGitHub/Source/HDitem.Persist/obj/Debug/netstandard2.0/HDitem.Persist.pdb
+/Users/RSB/ProjectsCoreGitHub/Source/HDitem.Persist/obj/Debug/netstandard2.0/HDitem.Persist.csprojAssemblyReference.cache
