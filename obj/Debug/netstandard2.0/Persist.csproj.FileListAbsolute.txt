@@ -1,0 +1,16 @@
+/Users/RSB/ProjectsCoreGitHub/Source/Persist/bin/Debug/netstandard2.0/Persist.deps.json
+/Users/RSB/ProjectsCoreGitHub/Source/Persist/bin/Debug/netstandard2.0/Persist.dll
+/Users/RSB/ProjectsCoreGitHub/Source/Persist/bin/Debug/netstandard2.0/Persist.pdb
+/Users/RSB/ProjectsCoreGitHub/Source/Persist/bin/Debug/netstandard2.0/JsonPit.dll
+/Users/RSB/ProjectsCoreGitHub/Source/Persist/bin/Debug/netstandard2.0/OsLibCore.dll
+/Users/RSB/ProjectsCoreGitHub/Source/Persist/bin/Debug/netstandard2.0/RaiUtilsCore.dll
+/Users/RSB/ProjectsCoreGitHub/Source/Persist/bin/Debug/netstandard2.0/JsonPit.pdb
+/Users/RSB/ProjectsCoreGitHub/Source/Persist/bin/Debug/netstandard2.0/OsLibCore.pdb
+/Users/RSB/ProjectsCoreGitHub/Source/Persist/bin/Debug/netstandard2.0/RaiUtilsCore.pdb
+/Users/RSB/ProjectsCoreGitHub/Source/Persist/obj/Debug/netstandard2.0/Persist.csprojAssemblyReference.cache
+/Users/RSB/ProjectsCoreGitHub/Source/Persist/obj/Debug/netstandard2.0/Persist.csproj.CoreCompileInputs.cache
+/Users/RSB/ProjectsCoreGitHub/Source/Persist/obj/Debug/netstandard2.0/Persist.AssemblyInfoInputs.cache
+/Users/RSB/ProjectsCoreGitHub/Source/Persist/obj/Debug/netstandard2.0/Persist.AssemblyInfo.cs
+/Users/RSB/ProjectsCoreGitHub/Source/Persist/obj/Debug/netstandard2.0/Persist.csproj.CopyComplete
+/Users/RSB/ProjectsCoreGitHub/Source/Persist/obj/Debug/netstandard2.0/Persist.dll
+/Users/RSB/ProjectsCoreGitHub/Source/Persist/obj/Debug/netstandard2.0/Persist.pdb
