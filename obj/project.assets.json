@@ -3033,11 +3033,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/RSB/ProjectsCoreGitHub/Source/Persist/Persist.csproj",
-      "projectName": "Persist",
-      "projectPath": "/Users/RSB/ProjectsCoreGitHub/Source/Persist/Persist.csproj",
+      "projectUniqueName": "/Users/RSB/ProjectsCoreGitHub/Source/HDitem.Persist/HDitem.Persist.csproj",
+      "projectName": "HDitem.Persist",
+      "projectPath": "/Users/RSB/ProjectsCoreGitHub/Source/HDitem.Persist/HDitem.Persist.csproj",
       "packagesPath": "/Users/RSB/.nuget/packages/",
-      "outputPath": "/Users/RSB/ProjectsCoreGitHub/Source/Persist/obj/",
+      "outputPath": "/Users/RSB/ProjectsCoreGitHub/Source/HDitem.Persist/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
