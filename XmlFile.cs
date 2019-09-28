@@ -69,7 +69,7 @@ using System.Xml.Serialization;
  * 
  */
 
-namespace HDitem.Persist
+namespace Persist
 {
 	// moved to Persist.cs
 	//public static class License

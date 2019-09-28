@@ -1,0 +1,274 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/RSB/ProjectsCore/ImgOrg20190927/Source/Persist/Persist.csproj": {}
+  },
+  "projects": {
+    "/Users/RSB/ProjectsCore/ImgOrg20190927/Source/JsonPit/JsonPit.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/RSB/ProjectsCore/ImgOrg20190927/Source/JsonPit/JsonPit.csproj",
+        "projectName": "JsonPit",
+        "projectPath": "/Users/RSB/ProjectsCore/ImgOrg20190927/Source/JsonPit/JsonPit.csproj",
+        "packagesPath": "/Users/RSB/.nuget/packages/",
+        "outputPath": "/Users/RSB/ProjectsCore/ImgOrg20190927/Source/JsonPit/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/Users/RSB/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {
+              "/Users/RSB/ProjectsCore/ImgOrg20190927/Source/OsLibCore/OsLibCore.csproj": {
+                "projectPath": "/Users/RSB/ProjectsCore/ImgOrg20190927/Source/OsLibCore/OsLibCore.csproj"
+              },
+              "/Users/RSB/ProjectsCore/ImgOrg20190927/Source/RaiUtils/RaiUtilsCore.csproj": {
+                "projectPath": "/Users/RSB/ProjectsCore/ImgOrg20190927/Source/RaiUtils/RaiUtilsCore.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "Jil": {
+              "target": "Package",
+              "version": "[2.17.0, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "Sigil": {
+              "target": "Package",
+              "version": "[4.7.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100-rc1-014190/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/RSB/ProjectsCore/ImgOrg20190927/Source/OsLibCore/OsLibCore.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/RSB/ProjectsCore/ImgOrg20190927/Source/OsLibCore/OsLibCore.csproj",
+        "projectName": "OsLibCore",
+        "projectPath": "/Users/RSB/ProjectsCore/ImgOrg20190927/Source/OsLibCore/OsLibCore.csproj",
+        "packagesPath": "/Users/RSB/.nuget/packages/",
+        "outputPath": "/Users/RSB/ProjectsCore/ImgOrg20190927/Source/OsLibCore/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/Users/RSB/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "RunProcessAsTask": {
+              "target": "Package",
+              "version": "[1.2.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100-rc1-014190/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/RSB/ProjectsCore/ImgOrg20190927/Source/Persist/Persist.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/RSB/ProjectsCore/ImgOrg20190927/Source/Persist/Persist.csproj",
+        "projectName": "Persist",
+        "projectPath": "/Users/RSB/ProjectsCore/ImgOrg20190927/Source/Persist/Persist.csproj",
+        "packagesPath": "/Users/RSB/.nuget/packages/",
+        "outputPath": "/Users/RSB/ProjectsCore/ImgOrg20190927/Source/Persist/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/Users/RSB/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {
+              "/Users/RSB/ProjectsCore/ImgOrg20190927/Source/JsonPit/JsonPit.csproj": {
+                "projectPath": "/Users/RSB/ProjectsCore/ImgOrg20190927/Source/JsonPit/JsonPit.csproj"
+              },
+              "/Users/RSB/ProjectsCore/ImgOrg20190927/Source/OsLibCore/OsLibCore.csproj": {
+                "projectPath": "/Users/RSB/ProjectsCore/ImgOrg20190927/Source/OsLibCore/OsLibCore.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100-rc1-014190/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/RSB/ProjectsCore/ImgOrg20190927/Source/RaiUtils/RaiUtilsCore.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/RSB/ProjectsCore/ImgOrg20190927/Source/RaiUtils/RaiUtilsCore.csproj",
+        "projectName": "RaiUtilsCore",
+        "projectPath": "/Users/RSB/ProjectsCore/ImgOrg20190927/Source/RaiUtils/RaiUtilsCore.csproj",
+        "packagesPath": "/Users/RSB/.nuget/packages/",
+        "outputPath": "/Users/RSB/ProjectsCore/ImgOrg20190927/Source/RaiUtils/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/Users/RSB/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            },
+            "Newtonsoft.json": {
+              "target": "Package",
+              "version": "[11.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100-rc1-014190/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

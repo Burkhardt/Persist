@@ -7,14 +7,14 @@
   "targets": {
     ".NETStandard,Version=v2.0": {},
     ".NETStandard,Version=v2.0/": {
-      "HDitem.Persist/1.0.0": {
+      "Persist/1.0.0": {
         "dependencies": {
           "JsonPit": "1.0.0",
           "NETStandard.Library": "2.0.3",
           "OsLibCore": "1.0.0"
         },
         "runtime": {
-          "HDitem.Persist.dll": {}
+          "Persist.dll": {}
         }
       },
       "Jil/2.17.0": {
@@ -579,7 +579,7 @@
     }
   },
   "libraries": {
-    "HDitem.Persist/1.0.0": {
+    "Persist/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

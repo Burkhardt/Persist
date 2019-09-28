@@ -71,7 +71,7 @@ using Newtonsoft.Json.Linq;
  * 
  */
 
-namespace HDitem.Persist
+namespace Persist
 {
 	public static class DynamicHelper
 	{

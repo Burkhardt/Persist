@@ -1,0 +1,270 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/raib/ProjectsCore/imgorg/Source/Persist/Persist.csproj": {}
+  },
+  "projects": {
+    "/Users/raib/ProjectsCore/imgorg/Source/JsonPit/JsonPit.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/raib/ProjectsCore/imgorg/Source/JsonPit/JsonPit.csproj",
+        "projectName": "JsonPit",
+        "projectPath": "/Users/raib/ProjectsCore/imgorg/Source/JsonPit/JsonPit.csproj",
+        "packagesPath": "/Users/raib/.nuget/packages/",
+        "outputPath": "/Users/raib/ProjectsCore/imgorg/Source/JsonPit/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/Users/raib/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {
+              "/Users/raib/ProjectsCore/imgorg/Source/OsLibCore/OsLibCore.csproj": {
+                "projectPath": "/Users/raib/ProjectsCore/imgorg/Source/OsLibCore/OsLibCore.csproj"
+              },
+              "/Users/raib/ProjectsCore/imgorg/Source/RaiUtils/RaiUtilsCore.csproj": {
+                "projectPath": "/Users/raib/ProjectsCore/imgorg/Source/RaiUtils/RaiUtilsCore.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "Jil": {
+              "target": "Package",
+              "version": "[2.17.0, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "Sigil": {
+              "target": "Package",
+              "version": "[4.7.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "/Users/raib/ProjectsCore/imgorg/Source/OsLibCore/OsLibCore.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/raib/ProjectsCore/imgorg/Source/OsLibCore/OsLibCore.csproj",
+        "projectName": "OsLibCore",
+        "projectPath": "/Users/raib/ProjectsCore/imgorg/Source/OsLibCore/OsLibCore.csproj",
+        "packagesPath": "/Users/raib/.nuget/packages/",
+        "outputPath": "/Users/raib/ProjectsCore/imgorg/Source/OsLibCore/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/Users/raib/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "RunProcessAsTask": {
+              "target": "Package",
+              "version": "[1.2.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "/Users/raib/ProjectsCore/imgorg/Source/Persist/Persist.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/raib/ProjectsCore/imgorg/Source/Persist/Persist.csproj",
+        "projectName": "Persist",
+        "projectPath": "/Users/raib/ProjectsCore/imgorg/Source/Persist/Persist.csproj",
+        "packagesPath": "/Users/raib/.nuget/packages/",
+        "outputPath": "/Users/raib/ProjectsCore/imgorg/Source/Persist/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/Users/raib/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": 
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {
+              "/Users/raib/ProjectsCore/imgorg/Source/JsonPit/JsonPit.csproj": {
+                "projectPath": "/Users/raib/ProjectsCore/imgorg/Source/JsonPit/JsonPit.csproj"
+              },
+              "/Users/raib/ProjectsCore/imgorg/Source/OsLibCore/OsLibCore.csproj": {
+                "projectPath": "/Users/raib/ProjectsCore/imgorg/Source/OsLibCore/OsLibCore.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "/Users/raib/ProjectsCore/imgorg/Source/RaiUtils/RaiUtilsCore.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/raib/ProjectsCore/imgorg/Source/RaiUtils/RaiUtilsCore.csproj",
+        "projectName": "RaiUtilsCore",
+        "projectPath": "/Users/raib/ProjectsCore/imgorg/Source/RaiUtils/RaiUtilsCore.csproj",
+        "packagesPath": "/Users/raib/.nuget/packages/",
+        "outputPath": "/Users/raib/ProjectsCore/imgorg/Source/RaiUtils/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/Users/raib/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            },
+            "Newtonsoft.json": {
+              "target": "Package",
+              "version": "[11.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}

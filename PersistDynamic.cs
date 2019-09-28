@@ -22,7 +22,7 @@ using Newtonsoft.Json.Linq;
 /// reimplement everything (JsonFile, JsonItem, JsonItems) with object and/or dynamic => throw away type safety (??!?)
 /// </summary>
 
-namespace HDitem.Persist
+namespace Persist
 {
 	public static class DynamicExtensions
 	{

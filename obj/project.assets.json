@@ -3033,11 +3033,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/RSB/ProjectsCoreGitHub/Source/HDitem.Persist/HDitem.Persist.csproj",
-      "projectName": "HDitem.Persist",
-      "projectPath": "/Users/RSB/ProjectsCoreGitHub/Source/HDitem.Persist/HDitem.Persist.csproj",
+      "projectUniqueName": "/Users/RSB/ProjectsCore/ImgOrg20190927/Source/Persist/Persist.csproj",
+      "projectName": "Persist",
+      "projectPath": "/Users/RSB/ProjectsCore/ImgOrg20190927/Source/Persist/Persist.csproj",
       "packagesPath": "/Users/RSB/.nuget/packages/",
-      "outputPath": "/Users/RSB/ProjectsCoreGitHub/Source/HDitem.Persist/obj/",
+      "outputPath": "/Users/RSB/ProjectsCore/ImgOrg20190927/Source/Persist/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
@@ -3054,11 +3054,11 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "/Users/RSB/ProjectsCoreGitHub/Source/JsonPit/JsonPit.csproj": {
-              "projectPath": "/Users/RSB/ProjectsCoreGitHub/Source/JsonPit/JsonPit.csproj"
+            "/Users/RSB/ProjectsCore/ImgOrg20190927/Source/JsonPit/JsonPit.csproj": {
+              "projectPath": "/Users/RSB/ProjectsCore/ImgOrg20190927/Source/JsonPit/JsonPit.csproj"
             },
-            "/Users/RSB/ProjectsCoreGitHub/Source/OsLibCore/OsLibCore.csproj": {
-              "projectPath": "/Users/RSB/ProjectsCoreGitHub/Source/OsLibCore/OsLibCore.csproj"
+            "/Users/RSB/ProjectsCore/ImgOrg20190927/Source/OsLibCore/OsLibCore.csproj": {
+              "projectPath": "/Users/RSB/ProjectsCore/ImgOrg20190927/Source/OsLibCore/OsLibCore.csproj"
             }
           }
         }
@@ -3080,10 +3080,16 @@
           }
         },
         "imports": [
-          "net461"
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
         ],
         "assetTargetFallback": true,
-        "warn": true
+        "warn": true,
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100-rc1-014190/RuntimeIdentifierGraph.json"
       }
     }
   }
