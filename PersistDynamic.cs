@@ -1,5 +1,5 @@
-﻿using OperatingSystemCore;
-using JsonPitCore;
+﻿using OsLib;
+using JsonPit;
 using System;
 using System.Collections;
 using System.Collections.Concurrent;

@@ -13,9 +13,9 @@ using System.Text;
 using System.Threading;
 //using System.Web.Script.Serialization;
 //using HDitem.Utilities;
-using RaiUtilsCore;
-using OperatingSystemCore;
-using JsonPitCore;
+using RaiUtils;
+using OsLib;
+using JsonPit;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 

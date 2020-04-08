@@ -1,6 +1,6 @@
-﻿using RaiUtilsCore;
-using OperatingSystemCore;
-using JsonPitCore;
+﻿using RaiUtils;
+using OsLib;
+using JsonPit;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;

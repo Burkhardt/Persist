@@ -2,11 +2,11 @@
 /Users/RSB/ProjectsCoreGitHub/Source/HDitem/bin/Debug/netstandard2.0/HDitem.dll
 /Users/RSB/ProjectsCoreGitHub/Source/HDitem/bin/Debug/netstandard2.0/HDitem.pdb
 /Users/RSB/ProjectsCoreGitHub/Source/HDitem/bin/Debug/netstandard2.0/JsonPit.dll
-/Users/RSB/ProjectsCoreGitHub/Source/HDitem/bin/Debug/netstandard2.0/OsLibCore.dll
-/Users/RSB/ProjectsCoreGitHub/Source/HDitem/bin/Debug/netstandard2.0/RaiUtilsCore.dll
+/Users/RSB/ProjectsCoreGitHub/Source/HDitem/bin/Debug/netstandard2.0/OsLib.dll
+/Users/RSB/ProjectsCoreGitHub/Source/HDitem/bin/Debug/netstandard2.0/RaiUtils.dll
 /Users/RSB/ProjectsCoreGitHub/Source/HDitem/bin/Debug/netstandard2.0/JsonPit.pdb
-/Users/RSB/ProjectsCoreGitHub/Source/HDitem/bin/Debug/netstandard2.0/OsLibCore.pdb
-/Users/RSB/ProjectsCoreGitHub/Source/HDitem/bin/Debug/netstandard2.0/RaiUtilsCore.pdb
+/Users/RSB/ProjectsCoreGitHub/Source/HDitem/bin/Debug/netstandard2.0/OsLib.pdb
+/Users/RSB/ProjectsCoreGitHub/Source/HDitem/bin/Debug/netstandard2.0/RaiUtils.pdb
 /Users/RSB/ProjectsCoreGitHub/Source/HDitem/obj/Debug/netstandard2.0/HDitem.csproj.CoreCompileInputs.cache
 /Users/RSB/ProjectsCoreGitHub/Source/HDitem/obj/Debug/netstandard2.0/HDitem.AssemblyInfoInputs.cache
 /Users/RSB/ProjectsCoreGitHub/Source/HDitem/obj/Debug/netstandard2.0/HDitem.AssemblyInfo.cs

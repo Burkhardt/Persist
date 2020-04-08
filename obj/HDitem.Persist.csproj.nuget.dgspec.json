@@ -29,10 +29,10 @@
           "netstandard2.0": {
             "projectReferences": {
               "/Users/raib/ProjectsCore/imgorg/Source/OsLibCore/OsLibCore.csproj": {
-                "projectPath": "/Users/raib/ProjectsCore/imgorg/Source/OsLibCore/OsLibCore.csproj"
+                "projectPath": "/Users/raib/ProjectsCore/imgorg/Source/OsLib/OsLib.csproj"
               },
-              "/Users/raib/ProjectsCore/imgorg/Source/RaiUtils/RaiUtilsCore.csproj": {
-                "projectPath": "/Users/raib/ProjectsCore/imgorg/Source/RaiUtils/RaiUtilsCore.csproj"
+              "/Users/raib/ProjectsCore/imgorg/Source/RaiUtils/RaiUtils.csproj": {
+                "projectPath": "/Users/raib/ProjectsCore/imgorg/Source/RaiUtils/RaiUtils.csproj"
               }
             }
           }
@@ -207,12 +207,12 @@
         }
       }
     },
-    "/Users/raib/ProjectsCore/imgorg/Source/RaiUtils/RaiUtilsCore.csproj": {
+    "/Users/raib/ProjectsCore/imgorg/Source/RaiUtils/RaiUtils.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/raib/ProjectsCore/imgorg/Source/RaiUtils/RaiUtilsCore.csproj",
-        "projectName": "RaiUtilsCore",
-        "projectPath": "/Users/raib/ProjectsCore/imgorg/Source/RaiUtils/RaiUtilsCore.csproj",
+        "projectUniqueName": "/Users/raib/ProjectsCore/imgorg/Source/RaiUtils/RaiUtils.csproj",
+        "projectName": "RaiUtils",
+        "projectPath": "/Users/raib/ProjectsCore/imgorg/Source/RaiUtils/RaiUtils.csproj",
         "packagesPath": "/Users/raib/.nuget/packages/",
         "outputPath": "/Users/raib/ProjectsCore/imgorg/Source/RaiUtils/obj/",
         "projectStyle": "PackageReference",

@@ -550,8 +550,8 @@
         "dependencies": {
           "Jil": "2.17.0",
           "Newtonsoft.Json": "12.0.1",
-          "OsLibCore": "1.0.0",
-          "RaiUtilsCore": "1.0.0",
+          "OsLib": "1.0.0",
+          "RaiUtils": "1.0.0",
           "Sigil": "4.7.0"
         },
         "runtime": {
@@ -568,12 +568,12 @@
           "OsLibCore.dll": {}
         }
       },
-      "RaiUtilsCore/1.0.0": {
+      "RaiUtils/1.0.0": {
         "dependencies": {
           "Newtonsoft.Json": "12.0.1"
         },
         "runtime": {
-          "RaiUtilsCore.dll": {}
+          "RaiUtils.dll": {}
         }
       }
     }
@@ -958,7 +958,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "RaiUtilsCore/1.0.0": {
+    "RaiUtils/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

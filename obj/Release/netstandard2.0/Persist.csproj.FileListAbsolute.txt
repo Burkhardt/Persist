@@ -2,11 +2,11 @@
 /Users/RSB/ProjectsCore/imgorg/Source/Persist/bin/Release/netstandard2.0/Persist.dll
 /Users/RSB/ProjectsCore/imgorg/Source/Persist/bin/Release/netstandard2.0/Persist.pdb
 /Users/RSB/ProjectsCore/imgorg/Source/Persist/bin/Release/netstandard2.0/JsonPit.dll
-/Users/RSB/ProjectsCore/imgorg/Source/Persist/bin/Release/netstandard2.0/OsLibCore.dll
-/Users/RSB/ProjectsCore/imgorg/Source/Persist/bin/Release/netstandard2.0/RaiUtilsCore.dll
+/Users/RSB/ProjectsCore/imgorg/Source/Persist/bin/Release/netstandard2.0/OsLib.dll
+/Users/RSB/ProjectsCore/imgorg/Source/Persist/bin/Release/netstandard2.0/RaiUtils.dll
 /Users/RSB/ProjectsCore/imgorg/Source/Persist/bin/Release/netstandard2.0/JsonPit.pdb
-/Users/RSB/ProjectsCore/imgorg/Source/Persist/bin/Release/netstandard2.0/OsLibCore.pdb
-/Users/RSB/ProjectsCore/imgorg/Source/Persist/bin/Release/netstandard2.0/RaiUtilsCore.pdb
+/Users/RSB/ProjectsCore/imgorg/Source/Persist/bin/Release/netstandard2.0/OsLib.pdb
+/Users/RSB/ProjectsCore/imgorg/Source/Persist/bin/Release/netstandard2.0/RaiUtils.pdb
 /Users/RSB/ProjectsCore/imgorg/Source/Persist/obj/Release/netstandard2.0/Persist.csprojAssemblyReference.cache
 /Users/RSB/ProjectsCore/imgorg/Source/Persist/obj/Release/netstandard2.0/Persist.AssemblyInfoInputs.cache
 /Users/RSB/ProjectsCore/imgorg/Source/Persist/obj/Release/netstandard2.0/Persist.AssemblyInfo.cs
