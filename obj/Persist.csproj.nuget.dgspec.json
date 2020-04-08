@@ -52,7 +52,7 @@
             },
             "Newtonsoft.Json": {
               "target": "Package",
-              "version": "[12.0.2, )"
+              "version": "[12.0.3, )"
             },
             "Sigil": {
               "target": "Package",
@@ -115,15 +115,15 @@
           "dependencies": {
             "Microsoft.Extensions.Logging": {
               "target": "Package",
-              "version": "[3.0.0, )"
+              "version": "[3.1.3, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
-              "version": "[12.0.2, )"
+              "version": "[12.0.3, )"
             },
             "RunProcessAsTask": {
               "target": "Package",
-              "version": "[1.2.3, )"
+              "version": "[1.2.4, )"
             }
           },
           "imports": [
