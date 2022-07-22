@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/RSB/ProjectsCoreGitHub/RaiCore/Persist/Persist.csproj": {}
+    "/Users/RSB/Projects2022/ProjectsCoreGitHub/Source/Persist/Persist.csproj": {}
   },
   "projects": {
-    "/Users/RSB/ProjectsCoreGitHub/RaiCore/JsonPit/JsonPit.csproj": {
-      "version": "2.1.2",
+    "/Users/RSB/Projects2022/ProjectsCoreGitHub/Source/JsonPit/JsonPit.csproj": {
+      "version": "2.2.0",
       "restore": {
-        "projectUniqueName": "/Users/RSB/ProjectsCoreGitHub/RaiCore/JsonPit/JsonPit.csproj",
+        "projectUniqueName": "/Users/RSB/Projects2022/ProjectsCoreGitHub/Source/JsonPit/JsonPit.csproj",
         "projectName": "JsonPit",
-        "projectPath": "/Users/RSB/ProjectsCoreGitHub/RaiCore/JsonPit/JsonPit.csproj",
+        "projectPath": "/Users/RSB/Projects2022/ProjectsCoreGitHub/Source/JsonPit/JsonPit.csproj",
         "packagesPath": "/Users/RSB/.nuget/packages/",
-        "outputPath": "/Users/RSB/ProjectsCoreGitHub/RaiCore/JsonPit/obj/",
+        "outputPath": "/Users/RSB/Projects2022/ProjectsCoreGitHub/Source/JsonPit/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
@@ -20,19 +20,20 @@
           "/Users/RSB/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "netstandard2.1"
+          "net6.0"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netstandard2.1": {
+          "net6.0": {
+            "targetAlias": "net6.0",
             "projectReferences": {
-              "/Users/RSB/ProjectsCoreGitHub/RaiCore/OsLib/OsLib.csproj": {
-                "projectPath": "/Users/RSB/ProjectsCoreGitHub/RaiCore/OsLib/OsLib.csproj"
+              "/Users/RSB/Projects2022/ProjectsCoreGitHub/Source/OsLib/OsLib.csproj": {
+                "projectPath": "/Users/RSB/Projects2022/ProjectsCoreGitHub/Source/OsLib/OsLib.csproj"
               },
-              "/Users/RSB/ProjectsCoreGitHub/RaiCore/RaiUtils/RaiUtils.csproj": {
-                "projectPath": "/Users/RSB/ProjectsCoreGitHub/RaiCore/RaiUtils/RaiUtils.csproj"
+              "/Users/RSB/Projects2022/ProjectsCoreGitHub/Source/RaiUtils/RaiUtils.csproj": {
+                "projectPath": "/Users/RSB/Projects2022/ProjectsCoreGitHub/Source/RaiUtils/RaiUtils.csproj"
               }
             }
           }
@@ -44,7 +45,8 @@
         }
       },
       "frameworks": {
-        "netstandard2.1": {
+        "net6.0": {
+          "targetAlias": "net6.0",
           "dependencies": {
             "Jil": {
               "target": "Package",
@@ -70,22 +72,22 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "NETStandard.Library": {
+            "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.201/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.200/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/RSB/ProjectsCoreGitHub/RaiCore/OsLib/OsLib.csproj": {
-      "version": "2.1.3",
+    "/Users/RSB/Projects2022/ProjectsCoreGitHub/Source/OsLib/OsLib.csproj": {
+      "version": "2.2.0",
       "restore": {
-        "projectUniqueName": "/Users/RSB/ProjectsCoreGitHub/RaiCore/OsLib/OsLib.csproj",
-        "projectName": "OsLib",
-        "projectPath": "/Users/RSB/ProjectsCoreGitHub/RaiCore/OsLib/OsLib.csproj",
+        "projectUniqueName": "/Users/RSB/Projects2022/ProjectsCoreGitHub/Source/OsLib/OsLib.csproj",
+        "projectName": "OsLibCore",
+        "projectPath": "/Users/RSB/Projects2022/ProjectsCoreGitHub/Source/OsLib/OsLib.csproj",
         "packagesPath": "/Users/RSB/.nuget/packages/",
-        "outputPath": "/Users/RSB/ProjectsCoreGitHub/RaiCore/OsLib/obj/",
+        "outputPath": "/Users/RSB/Projects2022/ProjectsCoreGitHub/Source/OsLib/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
@@ -94,13 +96,14 @@
           "/Users/RSB/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "netstandard2.1"
+          "net6.0"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netstandard2.1": {
+          "net6.0": {
+            "targetAlias": "net6.0",
             "projectReferences": {}
           }
         },
@@ -111,11 +114,12 @@
         }
       },
       "frameworks": {
-        "netstandard2.1": {
+        "net6.0": {
+          "targetAlias": "net6.0",
           "dependencies": {
             "Microsoft.Extensions.Logging": {
               "target": "Package",
-              "version": "[3.1.3, )"
+              "version": "[3.1.4, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
@@ -137,22 +141,22 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "NETStandard.Library": {
+            "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.201/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.200/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/RSB/ProjectsCoreGitHub/RaiCore/Persist/Persist.csproj": {
+    "/Users/RSB/Projects2022/ProjectsCoreGitHub/Source/Persist/Persist.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/RSB/ProjectsCoreGitHub/RaiCore/Persist/Persist.csproj",
+        "projectUniqueName": "/Users/RSB/Projects2022/ProjectsCoreGitHub/Source/Persist/Persist.csproj",
         "projectName": "Persist",
-        "projectPath": "/Users/RSB/ProjectsCoreGitHub/RaiCore/Persist/Persist.csproj",
+        "projectPath": "/Users/RSB/Projects2022/ProjectsCoreGitHub/Source/Persist/Persist.csproj",
         "packagesPath": "/Users/RSB/.nuget/packages/",
-        "outputPath": "/Users/RSB/ProjectsCoreGitHub/RaiCore/Persist/obj/",
+        "outputPath": "/Users/RSB/Projects2022/ProjectsCoreGitHub/Source/Persist/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
@@ -161,19 +165,20 @@
           "/Users/RSB/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "netstandard2.1"
+          "net6.0"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netstandard2.1": {
+          "net6.0": {
+            "targetAlias": "net6.0",
             "projectReferences": {
-              "/Users/RSB/ProjectsCoreGitHub/RaiCore/JsonPit/JsonPit.csproj": {
-                "projectPath": "/Users/RSB/ProjectsCoreGitHub/RaiCore/JsonPit/JsonPit.csproj"
+              "/Users/RSB/Projects2022/ProjectsCoreGitHub/Source/JsonPit/JsonPit.csproj": {
+                "projectPath": "/Users/RSB/Projects2022/ProjectsCoreGitHub/Source/JsonPit/JsonPit.csproj"
               },
-              "/Users/RSB/ProjectsCoreGitHub/RaiCore/OsLib/OsLib.csproj": {
-                "projectPath": "/Users/RSB/ProjectsCoreGitHub/RaiCore/OsLib/OsLib.csproj"
+              "/Users/RSB/Projects2022/ProjectsCoreGitHub/Source/OsLib/OsLib.csproj": {
+                "projectPath": "/Users/RSB/Projects2022/ProjectsCoreGitHub/Source/OsLib/OsLib.csproj"
               }
             }
           }
@@ -185,7 +190,8 @@
         }
       },
       "frameworks": {
-        "netstandard2.1": {
+        "net6.0": {
+          "targetAlias": "net6.0",
           "imports": [
             "net461",
             "net462",
@@ -197,22 +203,22 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "NETStandard.Library": {
+            "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.201/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.200/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/RSB/ProjectsCoreGitHub/RaiCore/RaiUtils/RaiUtils.csproj": {
+    "/Users/RSB/Projects2022/ProjectsCoreGitHub/Source/RaiUtils/RaiUtils.csproj": {
       "version": "2.1.0",
       "restore": {
-        "projectUniqueName": "/Users/RSB/ProjectsCoreGitHub/RaiCore/RaiUtils/RaiUtils.csproj",
+        "projectUniqueName": "/Users/RSB/Projects2022/ProjectsCoreGitHub/Source/RaiUtils/RaiUtils.csproj",
         "projectName": "RaiUtils",
-        "projectPath": "/Users/RSB/ProjectsCoreGitHub/RaiCore/RaiUtils/RaiUtils.csproj",
+        "projectPath": "/Users/RSB/Projects2022/ProjectsCoreGitHub/Source/RaiUtils/RaiUtils.csproj",
         "packagesPath": "/Users/RSB/.nuget/packages/",
-        "outputPath": "/Users/RSB/ProjectsCoreGitHub/RaiCore/RaiUtils/obj/",
+        "outputPath": "/Users/RSB/Projects2022/ProjectsCoreGitHub/Source/RaiUtils/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
@@ -228,6 +234,7 @@
         },
         "frameworks": {
           "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
             "projectReferences": {}
           }
         },
@@ -239,6 +246,7 @@
       },
       "frameworks": {
         "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
           "dependencies": {
             "Newtonsoft.json": {
               "target": "Package",
@@ -260,7 +268,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.201/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.200/RuntimeIdentifierGraph.json"
         }
       }
     }

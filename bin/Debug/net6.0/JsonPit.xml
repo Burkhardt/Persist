@@ -1,0 +1,505 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JsonPit</name>
+    </assembly>
+    <members>
+        <member name="F:JsonPit.ItemsBase.key">
+            <summary>Identifying name, i.e. JsonFileName from enclosing JsonFile</summary>
+        </member>
+        <member name="M:JsonPit.JsonPitBase.RunningOnMaster">
+            <summary>
+            Can be used to identify if the current server is master for this JsonFile
+            </summary>
+            <returns>true if current server has master rights to the file</returns>
+        </member>
+        <member name="M:JsonPit.JsonPitBase.MasterUpdatesAvailable">
+            <summary>
+            Did the master update the file since I last used it?
+            </summary>
+            <returns>true if a reload seems necessary, false otherwise</returns>
+        </member>
+        <member name="M:JsonPit.JsonPitBase.GetFileChanged">
+            <summary>
+            overload this in derived classes to give it some per JsonItem meaning
+            </summary>
+            <returns>timestamp</returns>
+        </member>
+        <member name="M:JsonPit.JsonPitBase.GetMemChanged">
+            <summary>
+            overload this in derived classes to give it some per JsonItem meaning once Infos is defined
+            </summary>
+            <returns>timestamp</returns>
+        </member>
+        <member name="M:JsonPit.JsonPitBase.FileHasChangedOnDisk">
+            <summary>
+            Loads the file from disk to compare the JsonItem.modified attribute of all JsonItem stored in it
+            </summary>
+            <remarks>greater means younger</remarks>
+            <returns>true, if the youngest setting on disk is younger than the youngest setting in memory</returns>
+        </member>
+        <member name="M:JsonPit.JsonPitBase.ForeignChangesAvailable">
+            <summary>
+            Changes from other servers are available when change files are there
+            </summary>
+            <returns>true if a reload seems necessary, false otherwise</returns>
+        </member>
+        <member name="P:JsonPit.JsonPitBase.ChangeDir">
+            <summary>
+            Directory for change files
+            </summary>
+            <remarks>new: change files are now on the top level, ie c:\Dropbox\3.5\Users\ or C:\Dropbox (HDitem)\3.6\demo\Overlays\</remarks>
+        </member>
+        <member name="P:JsonPit.TimestampedValue.Time">
+            <summary>
+            Time: get may be deferred, set instantly
+            </summary>
+            <remarks>any set DateTimeOffset value will be converted to UniversalTime</remarks>
+        </member>
+        <member name="M:JsonPit.TimestampedValue.ToString">
+            <summary>
+            string formats for time must be in format "o", parse in Time.get fails otherwise
+            </summary>
+        </member>
+        <member name="M:JsonPit.TimestampedValue.#ctor(System.Object,System.Nullable{System.DateTimeOffset})">
+            <summary>constructor</summary>
+            <param name="value"></param>
+            <param name="time">internally uses DateTimeOffset.UtcNow if omitted</param>
+            <remarks>converts null-value to "" because the file will store it the same way anyway</remarks>
+        </member>
+        <member name="M:JsonPit.TimestampedValue.#ctor(System.String)">
+            <summary>
+            Constructor from string, potentially with time appended as done by TimestampedValue.ToString()
+            </summary>
+            <remarks>Value gets assigned instantly, use format "o"</remarks>
+            <param name="valueAndTime"></param>
+        </member>
+        <member name="T:JsonPit.MasterFlagFile">
+            <summary>
+            Short flag file to contain info about the Server and the last load date of the xml files that is flagged (usually in a subdirectory)
+            </summary>
+            <remarks>
+            Flagfiles are associated with a particular server.
+            This means that only one Server will ever be allowed write access to this file. Even if the file is inside a Dropbox
+            (which it has to be for Persist to work), no other server can change the Server's flag file and only the assigned
+            Master Server can change the Master.flag file. The Master.flag file is a special case because if the Server is changed the 
+            owner of the Master.flag file changes accordingly(with the associated JsonFile).
+            However, although there is just one "owning" server there can be various threads or even programs that try to write the 
+            flagFile in the logical same time. This means the following:
+            - concurrent write access is possible => I/O blocking can occur
+            - the memory representation of the file's content can be wrong a split second after the file content was read
+            In a most likely scenario, only one Application is granted write access to a JsonFile and therefore it's associated FlagFiles.
+            Thus, a Monitor in this very process can avoid the concurrency and therefore the I/O Blocking.
+            JsonFlagFile implements this Monitor for all Write accesses to the file, which means that as long as only one App is
+            trying to change any JsonFile, no I/O blocking or other harmful collisions should occur.
+            In a scenario where the same App is deployed to two paths inside the IIS (with or without a seperate Application Pool)
+            other arrangements have to be made to make sure that no FlagFile is written by both processes/Apps concurrently.
+            The used Monitor works through serializing/queueing all threads entering the Monitor. It's tied to a system wide variable
+            that guards the file. This means that the variable has to be either static or to be located in some global storage like
+            Application. We think that it would be of significant advantage to use a static Variable in the associated JsonFile's 
+            typeparameter class.
+            The current implementation uses a static variable in the JsonFlagFile class - which is more restrictive without being more 
+            safe.
+            Any JsonFlagFile can be read by any process. Therefore, any process who cannot or should not (by what was agreed on above)
+            write to a JsonFlagFile can still consume it. This very file can change any second (and come in as a synchronization through Dropbox).
+            This means that any read access to the JsonFlagFile has to come with a ReRead of the file. Every Read therefore creates I/O.
+            Be careful when using the Properties .Server and .Time as get - it will cause a disk operation everytime you use it.
+            Every setter and Update will not only cause one or two Reads but also a Write.
+            </remarks>
+        </member>
+        <member name="P:JsonPit.MasterFlagFile.Originator">
+            <summary>
+            The originator for MasterFlagFile is a server
+            </summary>
+        </member>
+        <member name="P:JsonPit.MasterFlagFile.Time">
+            <summary>
+             time is very volatile - re-reading the whole file (~20 Bytes) every time seams to be justified
+            </summary>
+        </member>
+        <member name="M:JsonPit.MasterFlagFile.Update(System.Nullable{System.DateTimeOffset},System.String)">
+            <summary>
+            Use this instead of TimestampedValue.Time = newValue to optimize IO
+            </summary>
+            <param name="time"></param>
+            <param name="originator"></param>
+            <returns></returns>
+        </member>
+        <member name="P:JsonPit.ProcessFlagFile.Process">
+            <summary>
+            Process Name and Id; as opposed to Originator, Process can change in the background if more than one process on this server is using the same settings/items file; very volatile.
+            </summary>
+        </member>
+        <member name="M:JsonPit.ProcessFlagFile.Update(System.Nullable{System.DateTimeOffset},System.String)">
+            <summary>
+            Use this instead of TimestampedValue.Time = newValue to optimize IO
+            </summary>
+            <param name="time"></param>
+            <param name="process"></param>
+            <returns></returns>
+        </member>
+        <member name="P:JsonPit.PitItem.Modified">
+            <summary>has to be set to DateTimeOffset.UtcNow explicitely</summary>
+        </member>
+        <member name="M:JsonPit.PitItem.SetProperty(System.String)">
+            <summary>
+            add or set a property of this PitItem with value - keeps all other properties
+            </summary>
+            <param name="objectAsJsonString">one property as JSON, i.e. { "Subscriber": "demo" } or { "address": { "street": "1 Main St", "city": "A Town" } }</param>
+        </member>
+        <member name="M:JsonPit.PitItem.SetProperty(System.Object)">
+            <summary>
+            add or set a property of this PitItem with value - keeps all other properties
+            </summary>
+            <param name="obj">i.e. new { Subscriber = SelectedValue }</param>
+        </member>
+        <member name="M:JsonPit.PitItem.DeleteProperty(System.String)">
+            <summary>
+            add or set a property of this PitItem with value - keeps all other properties
+            </summary>
+            <param name="propertyName">name of property</param>
+        </member>
+        <member name="M:JsonPit.PitItem.Delete(System.String,System.Boolean)">
+            <summary>
+            Mark as deleted
+            </summary>
+            <param name="by"></param>
+            <param name="backDate100"></param>
+            <returns>false if it was deleted already, true otherwise</returns>
+        </member>
+        <member name="P:JsonPit.PitItem.Dirty">
+            <summary>
+            means: PitItem was modified from the original state of the setting as it was once loaded from disk; 
+            in a concurrent environment this does not necessarily mean that the current setting on disk has (still) an older value
+            since the file could have been updated on any other machine and synchronized back to this machine.
+            Use merge to get the youngest value - merge also adjusts the dirty flag accordingly.
+            </summary>
+        </member>
+        <member name="M:JsonPit.PitItem.Validate">
+            <summary>call to indicate that the memory representation of the PitItem now equals the file representation</summary>
+        </member>
+        <member name="M:JsonPit.PitItem.Invalidate(System.Boolean)">
+            <summary>call to indicate that the memory representation of the PitItem differs from the file representation</summary>
+            <param name="preserveTimestamp">does not update modified (only sets the dirty flag) if true</param>
+        </member>
+        <member name="M:JsonPit.PitItem.#ctor(System.String,System.String,System.Boolean)">
+            <summary>Constructor</summary>
+            <param name="name"></param>
+            <param name="comment"></param>
+            <param name="invalidate"></param>
+            <remarks>timestamp of this setting will be set to UtcNow after this</remarks>
+        </member>
+        <member name="M:JsonPit.PitItem.#ctor(System.String,System.String,System.Object)">
+            <summary>Constructor</summary>
+            <param name="name"></param>
+            <param name="comment"></param>
+            <param name="extendWith">i.e. new { someProperty = "some value" }</param>
+        </member>
+        <member name="M:JsonPit.PitItem.#ctor(System.String,System.String,System.String)">
+            <summary>Constructor</summary>
+            <param name="name"></param>
+            <param name="comment"></param>
+            <param name="extendWithAsJson">i.e. @"{""gender"": ""f""}"</param>
+            <remarks>timestamp of this setting will be set to UtcNow after this</remarks>
+        </member>
+        <member name="M:JsonPit.PitItem.#ctor(System.String,System.String,System.Boolean,System.DateTimeOffset)">
+            <summary>Constructor</summary>
+            <param name="name"></param>
+            <param name="comment"></param>
+            <param name="invalidate"></param>
+            <param name="timestamp"></param>
+            <remarks>timestamp of this setting will be set to UtcNow after this</remarks>
+        </member>
+        <member name="M:JsonPit.PitItem.#ctor(JsonPit.PitItem,System.Nullable{System.DateTimeOffset})">
+            <summary>copy-constructor</summary>
+            <param name="other"></param>
+            <param name="timestamp">null means use the one from other </param>
+            <remarks>timestamp will be set to from's timestamp after this</remarks>
+        </member>
+        <member name="M:JsonPit.PitItem.#ctor(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Copy constructor - sets the dirty flag but keeps Deleted, Modified, Name, and Note unchanged
+            </summary>
+            <param name="from"></param>
+        </member>
+        <member name="T:JsonPit.PitItemExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:JsonPit.PitItemExtensions.isLike(System.DateTimeOffset,System.DateTimeOffset)">
+            <summary>
+            compares timestamps to be almost the same
+            </summary>
+            <param name="dto1"></param>
+            <param name="dto2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JsonPit.PitItemExtensions.aligned(System.DateTimeOffset,System.DateTimeOffset)">
+            <summary>
+            Use this if you want to aling timestamps that are similar - uses isLike()
+            </summary>
+            <param name="dto1"></param>
+            <param name="dto2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JsonPit.PitItems.Push(JsonPit.PitItem,System.Boolean)">
+            <summary>
+             insert new element if it was not there already and keep Items ordered by Modified
+            </summary>
+            <param name="item"></param>
+            <param name="preserve"></param>
+        </member>
+        <member name="M:JsonPit.PitItems.Merge(JsonPit.PitItems)">
+            <summary>
+            joins all, removes duplicates, sorts
+            </summary>
+            <param name="pSet2"></param>
+        </member>
+        <member name="T:JsonPit.Pit">
+            <summary>
+            JsonPit is a file that contains Items
+            </summary>
+        </member>
+        <member name="M:JsonPit.Pit.defaultPitName(System.String,System.String,System.String)">
+            <summary>Createsfile names like C:/Dropbox/demo/DyBrands.json</summary>
+            <param name="subscriber">acts as subdirectory</param>
+            <param name="pit">works like type name for DynamicItem - affects the file's name</param>
+            <param name="version">"" => get version from JsonPit module; null => no version in path</param>
+            <returns>FullName</returns>
+        </member>
+        <member name="M:JsonPit.Pit.GetMemChanged">
+            <summary>
+            return the latest Modified of all
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:JsonPit.Pit.Invalid">
+            <summary>
+            Checks settings in the container
+            </summary>
+            <returns>true if any is not Valid, false if none</returns>
+        </member>
+        <member name="M:JsonPit.Pit.GetLastestItemChanged">
+            <summary>
+            latest change - does not consider the surrounding container, just the settings
+            </summary>
+            <returns>timestamp, DateTimeOffset.MinValue of none</returns>
+        </member>
+        <member name="P:JsonPit.Pit.Item(System.String)">
+            <summary>
+            gets the "top" item of the values as a stack (history, most recent)
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="P:JsonPit.Pit.PitItem">
+            <summary>
+            Add a PitItem; use value.Name as index key for history
+            </summary>
+        </member>
+        <member name="M:JsonPit.Pit.Add(JsonPit.PitItem,System.Boolean)">
+            <summary>add one setting at the end; same as array operator setter but with extra parameter preserve</summary>
+            <param name="item"></param>
+            <param name="preserve">set true, if you want to add a new or recovered setting and preserve the item's deleted and modified</param>
+            <remarks>don't add item if the latest item in the history has the same timestamp</remarks>
+            <returns>false, if the item was not pushed (identical timestamps of current value and new value</returns>
+        </member>
+        <member name="M:JsonPit.Pit.Delete(System.String,System.String,System.Boolean)">
+            <summary>logical delete; sets deleted flag</summary>
+            <param name="itemName"></param>
+            <param name="by">who deleted this item; used to write by into the item's Note</param>
+            <param name="backDate">todo: describe backDate parameter on Delete</param>
+            <returns>true: did not and still does not exist or is marked as deleted now</returns>
+            <remarks>when querying HistoricItems, each property of an item is considered to have the value null if the Deleted flag is set for this item</remarks>
+        </member>
+        <member name="M:JsonPit.Pit.Get(System.String,System.Boolean)">
+            <summary>
+            Get the latest PitItem for this key as JObject
+            </summary>
+            <param name="key"></param>
+            <param name="withDeleted"></param>
+            <remarks>converts better to dynamic</remarks>
+            <returns>default(PitItem) or the most recent PitItem as JObject</returns>
+        </member>
+        <member name="M:JsonPit.Pit.ValuesOverTime(System.String,System.String)">
+            <summary>
+            Extracts the values of one property of a PitItem over time
+            </summary>
+            <param name="oName">name of the object</param>
+            <param name="pName">name of the property</param>
+            <returns>IEnumerable with all timestamped values of this property as found in the JsonPit, everything else filtered away</returns>
+        </member>
+        <member name="M:JsonPit.Pit.ValueListsOverTime(System.String,System.String)">
+            <summary>
+            For facets that are known to store a list of values
+            </summary>
+            <param name="oName"></param>
+            <param name="pName"></param>
+            <returns>an IEnumerable of KeyValuePairs; the value part will be a List of JToken</returns>
+            <remarks>this way, the array operator can be used directly as expected</remarks>
+        </member>
+        <member name="M:JsonPit.Pit.AllUndeleted">
+            <summary>
+            collect just the most recent values - no history, without deleted; 
+            </summary>
+            <remarks>this runs a query and copies the values; rather use array operator of Pit or PitItems if possible</remarks>
+        </member>
+        <member name="M:JsonPit.Pit.Load(System.Boolean,System.Boolean)">
+            <summary>
+            Load Json file
+            </summary>
+            <param name="undercover">todo: describe undercover parameter on Load</param>
+            <param name="preserve"></param>
+        </member>
+        <member name="M:JsonPit.Pit.Store(System.Boolean,System.Boolean,System.Char)">
+            <summary>makes JsonFile persistent; performs merge on item level</summary>
+            <param name="force">todo: describe force parameter on Store</param>
+            <param name="pretty"></param>
+            <param name="indentChar"></param>
+        </member>
+        <member name="M:JsonPit.Pit.Save(System.Nullable{System.Boolean},System.Boolean)">
+            <summary>makes File persistent - thread safe</summary>
+            <param name="backup">backs up current xml file if true, or not if false, or uses the item passed in to the constructor if null</param>
+            <param name="force">todo: describe force parameter on Save</param>
+            <remarks>function varies across master and others: master can store to the actual file - others can only create change files
+            </remarks>
+        </member>
+        <member name="M:JsonPit.Pit.CreateChangeFiles">
+            <summary>
+            Save all changes as a single change file per setting
+            </summary>
+            <remarks>To determine what has changed, reloads the disk file's settings into a second variable and compares one by one with the ones in this.Infos.
+            Writes a ChangeFile for a setting only if it is newer than the setting from disk. The time stamp of the change file has to be the modified time stamp in the setting.
+            Does not care about settings that are newer on disk.</remarks>
+            <seealso cref="M:JsonPit.Pit.Load(System.Boolean,System.Boolean)"/>
+            <seealso cref="M:JsonPit.Pit.MergeChanges"/>
+        </member>
+        <member name="M:JsonPit.Pit.CreateChangeFile(JsonPit.PitItem,System.String)">
+            <summary>
+            A change file is a file that contains just one setting that can be merged into a file with many settings
+            </summary>
+            <param name="item"></param>
+            <param name="machineName">any machine name different from Environment.MachineName (default)</param>
+            <remarks>
+            new: 2016-08-16 for JsonPit wrap it in [[item]]
+            new: 2014-11-24 one change file must be sufficient for all servers, Dropbox distributes it;
+            make sure change file name contains the server who originated the change
+            for this to make sense, the JsonFile (with all settings) has to be located inside a dropbox and it's path has to contain the Environment.MachineName
+            old: D:\Dropbox\Config\3.3.3\U17138031\Servers.json with change file D:\Dropbox\Config\3.3.3\Titan562\Servers\U17138031_635284457032693173.json
+            new: D:\Dropbox\Config\3.6\Users.json with change file D:\Dropbox\Config\Users\635284457032693173_U17138031.json
+            </remarks>
+        </member>
+        <member name="M:JsonPit.Pit.MergeChanges">
+            <summary>
+            Loads all changes and updates the file if necessary; run after Load
+            </summary>
+            <remarks>only the master is supposed to alter the main file or to delete change files; 
+            new: change files now also have to be at least 10 min old to give all Dropbox instances a chance to do their sync
+            and: only the master is allowed to perform deletion of ChangeFiles or updating of the main file on disk</remarks>
+        </member>
+        <member name="M:JsonPit.Pit.Reload">
+            <summary>
+            Reloads an JsonPit and all it's changes from disk if necessary (changes this.Infos)
+            </summary>
+            <returns>true if a reload was performed (and Infos was changed), false otherwise (Infos unchanged)</returns>
+        </member>
+        <member name="M:JsonPit.Pit.#ctor(System.String,System.Collections.Generic.IEnumerable{JsonPit.PitItems},System.String,System.String,System.Func{JsonPit.PitItem,System.String},System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.String)">
+            <summary>Get or Add whole List; list contains most recent items including deleted ones</summary>
+            <remarks>use SettingNames or Select to get a list without deleted entries; does not return the history of an item</remarks>
+            <param name="pitName">a name: might cause problems if name contains characters that cause problems with the file system or the URI</param>
+            <param name="autoload"></param>
+            <param name="backup"></param>
+            <param name="descending"></param>
+            <param name="ignoreCase"></param>
+            <param name="orderBy"></param>
+            <param name="path">the path can include the pitName; will be overridden by pitName if given</param>
+            <param name="readOnly"></param>
+            <param name="subscriber"></param>
+            <param name="undercover"></param>
+            <param name="unflagged"></param>
+            <param name="values">as returned by e.g. JArray.Parse(File.ReadAllText(fName))</param>
+            <param name="version">"" (default) for get the version from the code; null for no version in path</param>
+        </member>
+        <member name="M:JsonPit.Pit.Finalize">
+            <summary>
+            Destructor - make sure the ChangeFile or the main file are up to date once the Pit gets disposed from Memory
+            </summary>
+            http://stackoverflow.com/questions/20065780/do-zombies-exist-in-net/20067933?s=23|0.0764#20067933
+        </member>
+        <member name="T:JsonPit.Item">
+            <summary>
+            /// enables advanced synchronization via modified
+            </summary>
+        </member>
+        <member name="P:JsonPit.Item.Name">
+            <summary>Identifying name</summary>
+        </member>
+        <member name="P:JsonPit.Item.Modified">
+            <summary>has to be set to DateTimeOffset.UtcNow explicitely</summary>
+        </member>
+        <member name="P:JsonPit.Item.Dirty">
+            <summary>
+            means: XmlSetting was modified from the original state of the setting as it was once loaded from disk; 
+            in a concurrent environment this does not necessarily mean that the current setting on disk has (still) an older value
+            since the file could have been updated on any other machine and synchronized back to this machine.
+            Use merge to get the youngest value - merge also adjusts the dirty flag accordingly.
+            </summary>
+        </member>
+        <member name="M:JsonPit.Item.Validate">
+            <summary>call to indicate that the memory representation of the XmlSettings&lt;T&gt; now equals the file representation</summary>
+        </member>
+        <member name="M:JsonPit.Item.Invalidate(System.Boolean)">
+            <summary>call to indicate that the memory representation of the XmlSettings&lt;T&gt; differs from the file representation</summary>
+            <param name="preserveTimestamp">does not update modified (only sets the dirty flag) if true</param>
+        </member>
+        <member name="M:JsonPit.Item.ToString">
+            <summary>
+            also called by the debugger but no breakpoints will be hit by this calls
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:JsonPit.Item.Matches(JsonPit.Item)">
+            <summary>
+            compare method - overload this when more complex comparison is wanted
+            </summary>
+            <param name="x"></param>
+            <returns>true, if it matches</returns>
+        </member>
+        <member name="M:JsonPit.Item.Clone``1">
+            <summary>
+            Create a Clone of the this object (created via Serialization/Deserialization using Jil) - type is known
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns>a copy of the this object</returns>
+        </member>
+        <member name="M:JsonPit.Item.Merge(JsonPit.Item)">
+            <summary>
+            merges a second setting into this setting; overload in derived classes; updates the dirty flag of this setting if second is younger (greater)
+            </summary>
+            <param name="second"></param>
+            <remarks>this.dirty will be true after the call if second.dirty was true before the call AND second was modified more recently than this</remarks>
+        </member>
+        <member name="M:JsonPit.Item.#ctor(System.String,System.String,System.Boolean)">
+            <summary>Constructor</summary>
+            <param name="name"></param>
+            <param name="comment"></param>
+            <param name="invalidate"></param>
+            <remarks>timestamp of this setting will be set to UtcNow after this</remarks>
+        </member>
+        <member name="M:JsonPit.Item.#ctor(JsonPit.Item)">
+            <summary>copy-constructor</summary>
+            <remarks>timestamp will be set to from's timestamp after this</remarks>
+        </member>
+        <member name="M:JsonPit.Item.#ctor">
+            <summary>Parameterless constructor</summary>
+            <remarks>nothing will be set after this; leave everything (name, note and modified) for the serializer to set.
+            This constructor is sort-of reserved for the use by the serializer; make sure to use any other constructor in your
+            derived class, like :base(name, comment) to have the timestamp in modified initialized properly.
+            If you want to use any other constructor as base class constructor for the parameterless constructor of your custom
+            class XxxSetting, make sure to pass in invalidate: false. Otherwise merge would create erroneous results.
+            see SubscriberSetting for an example
+            </remarks>
+        </member>
+    </members>
+</doc>

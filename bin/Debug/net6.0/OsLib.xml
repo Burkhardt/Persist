@@ -1,0 +1,237 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OsLib</name>
+    </assembly>
+    <members>
+        <member name="F:OsLib.Os.linkedDroboxDir">
+            <summary>
+            On a macOS, make sure this is linked to avoid problems with white spaces in the path, like "ZMOD dropbox"
+            example: ln -s /Users/Shared/DropboxZMOD /Users/Shared/ZMOD\ Dropbox
+            </summary>
+        </member>
+        <member name="P:OsLib.Os.DropboxRoot">
+            <summary>
+            Get the current server's Dropbox root or use SyncRootDir if not possible
+            </summary>
+            <value>returns "" or the path with Os.DIRSEPERATOR at the end</value>
+        </member>
+        <member name="M:OsLib.RaiFileExtensions.MakePolicyCompliant(System.Collections.Generic.List{System.String},System.Boolean)">
+            <summary>
+            MakePolicyCompliant
+            \n will be removed – subsequent string will be put in a new line
+            \t is allowed and will not be removed, even if multiple (beginning of line and end of line)
+            'multiple whitespaces will be reduced to 1, no matter where they occur (use \t for indention of value seperation)
+            empty lines will be removed
+            </summary>
+            <returns>a new List of string</returns>
+        </member>
+        <member name="T:OsLib.RaiPath">
+            <summary>
+            just the path, no filename, no extension
+            </summary>
+        </member>
+        <member name="M:OsLib.RaiPath.op_Division(OsLib.RaiPath,System.String)">
+            <summary>
+            Using the / operator to add a subdirectory to a path
+            </summary>
+            <param name="self"></param>
+            <param name="subDir">string</param>
+            <returns>RaiPath object for daisy chaining reasons</returns>
+        </member>
+        <member name="P:OsLib.RaiFile.Name">
+            <summary>
+            // without dir structure and without extension
+            </summary>				
+        </member>
+        <member name="P:OsLib.RaiFile.NameWithExtension">
+            <summary>
+            without dir structure but with "." and with extension, ie 123456.png
+            </summary>				
+        </member>
+        <member name="P:OsLib.RaiFile.Ext">
+            <summary>
+            extension of the picture without '.', ie "png"
+            </summary>
+        </member>
+        <member name="M:OsLib.RaiFile.Exists">
+            <summary>
+            Check if the file currently exists in the file system
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:OsLib.RaiFile.cp(OsLib.RaiFile)">
+            <summary>
+            Copy file
+            </summary>
+            <param name="from">will be checked; exception will be thrown if file name does not match RsbFile form requirements</param>
+            <returns>0 if everything went well</returns>
+        </member>
+        <member name="M:OsLib.RaiFile.cp(System.String)">
+            <summary>
+            Copy file
+            </summary>
+            <param name="from">can be any valid file name - no form requirements</param>
+            <returns></returns>
+        </member>
+        <member name="M:OsLib.RaiFile.cd">
+            <summary>
+            Change current working directory to the path in the RaiFile or the FullName if it is a directory
+            </summary>
+        </member>
+        <member name="M:OsLib.RaiFile.rmdir(System.Int32)">
+            <summary>
+            does nothing if dir is not empty unless depth is set to > 0; assumes this RaiFile is a directory
+            </summary>
+            <param name="depth">deletes up to depth levels of subdirectories</param>
+        </member>
+        <member name="M:OsLib.RaiFile.rmdir(System.String)">
+            <summary>
+            throws exception if dir is not empty
+            </summary>
+            <param name="path">must point to a directory</param>
+        </member>
+        <member name="P:OsLib.RaiFile.dirEmpty">
+            <summary>
+            assumes that FullName points to a directory; check if it contains files
+            </summary>
+            <value>true if no files in this directory</value>
+        </member>
+        <member name="M:OsLib.RaiFile.mkdir(System.String)">
+            <summary>Create a directory if it does not exist yet</summary>
+            <param name="dirname"></param>
+            <returns>DirectoryInfo structure; contains properties Exists and CreationDate</returns>
+        </member>
+        <member name="M:OsLib.RaiFile.Zip">
+            <summary>
+            zip this file into archive
+            </summary>
+            <returns>the archive name</returns>
+        </member>
+        <member name="M:OsLib.RaiFile.CopyTo(System.String[])">
+            <summary>
+            copies the file on disk identified by the current RsbFile object to multiple destinations
+            </summary>
+            <param name="destDirs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OsLib.RaiFile.backup(System.Boolean)">
+            <summary>create a backup file</summary>
+            <param name="copy">moves if false, copies otherwise</param>
+            <returns>name of backupfile, if there was one created</returns>
+            <remarks>the Os.LocalBackupDir will be used; make sure it's not in the Dropbox</remarks>
+        </member>
+        <member name="M:OsLib.RaiFile.#ctor(System.String)">
+            <summary>
+            Constructor: auto-ensure mode for file systems that do not synchronously wait for the end of an IO operation i.e. Dropbox
+            </summary>
+            <remarks>only use the ensure mode if it has to be guaranteed that the IO operation was completely done
+            when the method call returns; necessary e.g. for Dropbox directories since (currently) Dropbox first updates the
+            file in the invisible . folder and then asynchronously updates the visible file and all the remote copies of it</remarks>
+            <param name="filename"></param>
+        </member>
+        <member name="P:OsLib.TextFile.Changed">
+            <summary>
+            holds info if anything has changed in memory since last read
+            </summary>
+        </member>
+        <member name="P:OsLib.TextFile.Item(System.Int32)">
+            <summary>
+            List automatically extends according to https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.addrange?view=netcore-2.2
+            if tests fail, AddRange could be employed
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:OsLib.TextFile.Save(System.Boolean)">
+            <summary>
+            Save the TextFile to disk, including dropbox locations
+            </summary>
+            <param name="backup">with backup == false the wait for materializing is not going to work; only use outside dropbox and alike</param>
+        </member>
+        <member name="T:OsLib.CsvFile">
+            <summary>
+            current settings: \t as field seperator, field values not quoted
+            </summary>
+        </member>
+        <member name="M:OsLib.CsvFile.Object(System.Int32)">
+            <summary>
+            Get csv row as object
+            </summary>
+            <param name="idx">data starts at index 1</param>
+            <returns></returns>
+        </member>
+        <member name="M:OsLib.CsvFile.Read(System.String,System.Boolean)">
+            <summary>
+            Read a csv file into memory
+            </summary>
+            <returns>number of rows; without the headline</returns>
+        </member>
+        <member name="M:OsLib.TmpFile.#ctor(System.String,System.String)">
+            <summary>
+            a file in the TempDir, located usually on the fastest drive of the system (SSD or RAM-Disk)
+            </summary>
+            <param name="fileName">no fileName given: the OS chooses a temp file name</param>
+            <param name="ext">changes the system generated or given filename, if != null</param>
+        </member>
+        <member name="M:OsLib.RaiSystem.Exec(System.String@)">
+            <summary>Exec for apps that don't want console output
+            </summary>
+            <param name="msg">returns output of called program</param>
+            <returns>0 if ok</returns>
+            <remarks>RsbSystem instance keeps the result in member ExitCode</remarks>
+        </member>
+        <member name="M:OsLib.RaiSystem.Exec(System.Boolean)">
+            <summary>Exec for console apps</summary>
+            <param name="wait">waits for the process to exit</param>
+            <returns>null or process</returns>
+            <remarks>RsbSystem instance keeps the result in member ExitCode if wait==true</remarks>
+        </member>
+        <member name="M:OsLib.RaiNetDrive.Mount(System.String,System.String,System.String,System.String,System.String@)">
+            <summary></summary>
+            <param name="drive">todo: describe drive parameter on Mount</param>
+            <param name="path">todo: describe path parameter on Mount</param>
+            <param name="user">todo: describe user parameter on Mount</param>
+            <param name="pwd">todo: describe pwd parameter on Mount</param>
+            <param name="msg">todo: describe msg parameter on Mount</param>
+        </member>
+        <member name="M:OsLib.RaiNetDrive.Unmount(System.String,System.String@)">
+            <summary>
+            Unmount a network drive
+            </summary>
+            <param name="drive"></param>
+            <param name="msg">todo: describe msg parameter on Unmount</param>
+            <returns>0 if successful</returns>
+            <remarks>replaces addDrive</remarks>
+        </member>
+        <member name="M:OsLib.CmdInfo.Echo(System.String)">
+            <summary>
+            echos something - replaces all environment variables
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:OsLib.CmdInfo.PATH(System.String,System.String)">
+            <summary>
+            Used by property Path
+            </summary>
+            <param name="rcFile">setup file as used in a source statement for the shell, i.e. "~/.zshrc </param>
+            <param name="newPath">the directory path to add, i.e. ~/.mlw</param>
+            <returns>true if Path was added or was there already</returns>
+        </member>
+        <member name="M:OsLib.CmdInfo.Alias(System.String,System.String,System.String)">
+            <summary>
+            set an alias in a shell source file
+            </summary>
+            <param name="alias">the alias name to find in the shell source script (~/.zshrc or ~/.bashrc), i.e. mlw</param>
+            <param name="resolvesTo">new value i.e. '~/.mlw/mlw'; null for just checking if alias exists</param>
+            <param name="rcFile">shell source file to inspect for aliases</param>
+            <returns>true, if the alias is there now (or was there already)</returns>
+        </member>
+        <member name="M:OsLib.CmdInfo.Aliases(System.String)">
+            <summary>
+            get the aliases from a particular shell source file
+            </summary>
+            <param name="rcFile">i.e. ~/.zshrc</param>
+            <returns>list of all defined aliases</returns>
+        </member>
+    </members>
+</doc>

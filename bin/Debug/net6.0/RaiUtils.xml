@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RaiUtils</name>
+    </assembly>
+    <members>
+        <member name="T:RaiUtils.Email">
+            <summary>
+            Validates strings
+            </summary>
+        </member>
+        <member name="P:RaiUtils.Email.Valid">
+            <summary>
+            true, if the constructor parameter passed the syntactical validation for a valid email address
+            </summary>
+        </member>
+        <member name="P:RaiUtils.Email.Invalid">
+            <summary>
+            true, if the constructor parameter did not pass the syntactical validation for a valid email address
+            </summary>
+        </member>
+        <member name="M:RaiUtils.ParameterDictionary.#ctor(System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Initialize with all lowercase items of the paramArray
+            </summary>
+            <param name="paramArray"></param>
+        </member>
+        <member name="M:RaiUtils.RandomExtensions.Random``1(System.Collections.Generic.IEnumerable{``0},System.Random)">
+            <summary>
+            Returns a random element from a list, or null if the list is empty.
+            </summary>
+            <param name="rand">An instance of a random number generator</param>
+            <param name="list">todo: describe list parameter on Random</param>
+            <typeparam name="T">The type of object being enumerated</typeparam>
+            <returns>A random element from a list, or null if the list is empty</returns>
+        </member>
+        <member name="M:RaiUtils.RandomExtensions.Shuffle``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Returns a shuffled IEnumerable.
+            </summary>
+            <param name="source">todo: describe source parameter on Shuffle</param>
+            <typeparam name="T">The type of object being enumerated</typeparam>
+            <returns>A shuffled shallow copy of the source items</returns>
+        </member>
+        <member name="M:RaiUtils.RandomExtensions.Shuffle``1(System.Collections.Generic.IEnumerable{``0},System.Random)">
+            <summary>
+            Returns a shuffled IEnumerable.
+            </summary>
+            <param name="rand">An instance of a random number generator</param>
+            <param name="source">todo: describe source parameter on Shuffle</param>
+            <typeparam name="T">The type of object being enumerated</typeparam>
+            <returns>A shuffled shallow copy of the source items</returns>
+        </member>
+        <member name="M:RaiUtils.RandomExtensions.Shuffle``1(System.Collections.Generic.IList{``0})">
+            <summary>
+            Shuffles an IList in place.
+            </summary>
+            <param name="list">todo: describe list parameter on Shuffle</param>
+            <typeparam name="T">The type of elements in the list</typeparam>
+        </member>
+        <member name="M:RaiUtils.RandomExtensions.Shuffle``1(System.Collections.Generic.IList{``0},System.Random)">
+            <summary>
+            Shuffles an IList in place.
+            </summary>
+            <param name="rand">An instance of a random number generator</param>
+            <param name="list">todo: describe list parameter on Shuffle</param>
+            <typeparam name="T">The type of elements in the list</typeparam>
+        </member>
+        <member name="M:RaiUtils.RandomExtensions.TakeAny``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+            <summary>
+            takes a given number of elements randomly
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="source"></param>
+            <param name="take">number of elements to take; if this number is close to the total number of elements in source
+            this function will create duplicates; use Distinct() on the result set to eliminate them (which of course can lead to a smaller count in the result set)
+            </param>
+            <remarks>ImageController implements a solution for this</remarks>
+            <returns>take elements randomly picked (or less)</returns>
+        </member>
+        <member name="T:RaiUtils.SearchExpression">
+            <summary>
+            Simple search expression containing '*', '+' and ' ' and other whitespace characters
+            </summary>
+        </member>
+        <member name="M:RaiUtils.SearchExpression.Contains(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="Value"></param>
+            <param name="PlusSeperatedString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RaiUtils.SearchExpression.IsMatch(System.Object)">
+            <summary>
+            compares to a passed in object by trying to find the pattern in any property of the object
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+            <remarks>search can be limited to a field by setting the correct field name, e.g. Email=*hse24*</remarks>
+        </member>
+        <member name="M:RaiUtils.SearchExpression.#ctor(System.String)">
+            <summary>
+            Parse the given expression or pattern
+            </summary>
+            <param name="pattern"></param>
+            <example>name=Rainer* deleted+2012 deleted=false
+            means: 
+            a) find every object where the value of the property name starts with Rainer
+            b) check if the JSON-Representation contains deleted and 2012
+            c) check if the value of the field deleted contains the string false
+            if all yes: IsMatch evaluates to true, else false</example>
+            <remarks>known problems:
+            Escaping of special characters like &lt;, &gt;, /, =, +
+            uppercase/lowercase for fieldnames
+            captions not necessarily match the field names (especially in localizations)
+            2-step-processing (ParsePattern, IsMatch) might not work with LinqDataSource
+            </remarks>
+        </member>
+    </members>
+</doc>
